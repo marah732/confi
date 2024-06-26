@@ -1,0 +1,42 @@
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://192.168.219.228:8761/eureka/
+  instance:
+    hostname: localhost
+
+management:
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans
+  tracing:
+    enabled: true
+    sampling:
+      probability: 1.0
+
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: ds_project
+      
+logging:
+  file:
+    name: C:\Users\alaaa\Desktop\ds_project\logger.log    
+    
+microservice:
+  payment-service:
+    endpoints:
+      endpoint:
+        uri: http://PAYMENT-SERVICE/payment/doPayment
+  order-service:
+    endpoints:
+      endpoint:
+        uri: http://ORDER-SERVICE/order/bookOrder
+  product-service:
+    endpoints:
+      endpoint:
+        uri: http://PRODUCT-SERVICE/product/products-by-cat-id
